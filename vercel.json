@@ -1,0 +1,15 @@
+{
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=4096"
+    }
+  },
+  "functions": {
+    "src/pages/**.tsx": {
+      "runtime": "@vercel/node"
+    }
+  },
+  "framework": "vite",
+  "outputDirectory": "dist",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}
