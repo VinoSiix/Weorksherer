@@ -10,6 +10,14 @@ export default defineConfig(() => ({
     port: 8080,
   },
   plugins: [react()],
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (warning.code === 'UNRESOLVED_IMPORT' && warning.message.includes('src/main.tsx')) return;
+        warn(warning);
+      }
+    }
+  },
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
