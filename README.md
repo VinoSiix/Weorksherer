@@ -1,73 +1,178 @@
-# Welcome to your Lovable project
+# 📚 Worksheet Generator
 
-## Project info
+An AI-powered educational tool that creates custom worksheets instantly. Generate grade-specific worksheets with AI assistance, convert them to professional PDFs, and manage your entire worksheet history.
 
-**URL**: https://lovable.dev/projects/6c9e9029-732e-4f9f-a773-deca1f54ab40
+## ✨ Features
 
-## How can I edit this code?
+- **🎓 Grade-Specific Content**: Worksheets tailored for grades Kindergarten through 12th grade
+- **🤖 AI-Powered Generation**: Advanced AI creates high-quality educational content
+- **📄 Professional PDFs**: Get separate PDF downloads for questions and answers
+- **🔖 Markdown Support**: Bold text formatting in generated worksheets using **text**
+- **📋 Interactive Form**: Easy customization with subject, topic, difficulty, and extra details
+- **🗂️ Worksheet History**: Comprehensive history management and organization
+- **👥 User Authentication**: Secure account-based worksheet management via Supabase
+- **🎨 Modern UI**: Beautiful, responsive interface with dark/light theme support
+- **⚡ Instant Generation**: Get worksheets in seconds with real-time AI processing
 
-There are several ways of editing your application.
+## 🚀 Quick Start
 
-**Use Lovable**
+### Prerequisites
+- Node.js & npm installed ([install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/6c9e9029-732e-4f9f-a773-deca1f54ab40) and start prompting.
+### Installation
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
+```bash
+# Clone the repository
 git clone <YOUR_GIT_URL>
+cd worksheet-generator
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Environment Setup
+Create a `.env` file in the root directory:
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+```env
+VITE_SUPABASE_URL=your_supabase_project_url
+VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
+```
 
-**Use GitHub Codespaces**
+## 🏗️ Tech Stack
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- **Frontend**: React 18 + TypeScript + Vite
+- **UI**: shadcn/ui components + Tailwind CSS
+- **Backend**: Supabase (Authentication & Database)
+- **PDF Generation**: jsPDF (client-side PDF creation)
+- **Icons**: Lucide React
+- **Routing**: React Router v6
 
-## What technologies are used for this project?
+## 📁 Project Structure
 
-This project is built with:
+```
+/src
+├── components/          # Reusable UI components
+│   ├── Header.tsx       # Global navigation header
+│   └── ui/              # shadcn/ui components
+├── pages/               # Application routes
+│   ├── Auth.tsx         # Authentication page
+│   ├── Generator.tsx    # Worksheet generation form
+│   ├── History.tsx      # Worksheet history management
+│   └── Landing.tsx      # Landing page with features
+├── integrations/        # External service integrations
+└── lib/                 # Utility functions
+```
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## 🎯 Usage
 
-## How can I deploy this project?
+### 1. **Generate Worksheets**
+- Navigate to the Generator page
+- Select grade level, subject, and enter topic
+- Adjust difficulty and question count
+- Add extra details for customization
+- Enable answer key if needed
 
-Simply open [Lovable](https://lovable.dev/projects/6c9e9029-732e-4f9f-a773-deca1f54ab40) and click on Share -> Publish.
+### 2. **AI-Powered Creation**
+- Content is generated via n8n workflows
+- Text is processed and converted to professional PDFs
+- **Bold text** support for markdown formatting
 
-## Can I connect a custom domain to my Lovable project?
+### 3. **Manage History**
+- Access all generated worksheets from the History page
+- Download questions and answers separately
+- View creation timestamps and details
+- Search and organize your content
 
-Yes, you can!
+### 4. **PDF Features**
+- Professional formatting with grade/subject headers
+- Separate question and answer sheets
+- Clean, printable layouts
+- Instant download functionality
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 🎨 Customization
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+### Adding New Grade Levels
+Edit the `grades` array in `Generator.tsx`:
+
+```typescript
+const grades = [
+  "Kindergarten",
+  "1st Grade",
+  // ... add new grades
+];
+```
+
+### Adding New Subjects
+Update the `subjects` array:
+
+```typescript
+const subjects = [
+  "Math",
+  "Science",
+  // ... add new subjects
+];
+```
+
+### Styling
+- **Themes**: Built-in light/dark mode support
+- **Colors**: Wine red accent color with comprehensive color palette
+- **Animations**: Smooth hover effects and transitions
+- **Responsive**: Mobile-first design approach
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit changes: `git commit -m 'Add feature'`
+4. Push: `git push origin feature-name`
+5. Open a Pull Request
+
+## 🐛 Troubleshooting
+
+### Common Issues
+
+**PDF Generation Issues:**
+- Ensure jsPDF is properly installed
+- Check for network connectivity to AI services
+
+**Authentication Problems:**
+- Verify Supabase configuration
+- Check environment variables
+
+**Styling Issues:**
+- Clear Tailwind cache: `npx tailwindcss -i ./src/index.css -o ./dist/output.css --watch`
+- Rebuild node_modules if needed
+
+### Development Commands
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Run linting
+npm run lint
+
+# Preview production build
+npm run preview
+```
+
+## 📜 License
+
+This project is proprietary software. All rights reserved.
+
+## 📞 Support
+
+For technical support or questions:
+- Open an issue in the GitHub repository
+- Include your error logs and environment details
+- Describe the steps to reproduce any issues
+
+---
+
+**Made with ❤️ for educators worldwide**
